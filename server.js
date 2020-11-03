@@ -1,14 +1,12 @@
 const express = require("express");
-const redis = require("redis");
 const axios = require("axios");
 const bodyParser = require("body-parser");
 
-//Setting up ports
-const PORT_REDIS = process.env.PORT || 6379;
-const PORT = process.env.PORT || 5000;
+//Definning routes
+const testRoute = require("./routes/test");
 
-//configuring redis client on port 6379
-const redis_client = redis.createClient(PORT_REDIS);
+//Setting up ports
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
@@ -19,6 +17,9 @@ app.use(
 );
 
 app.use(bodyParser.json());
+
+//Using routes
+app.use("/", testRoute);
 
 app.listen(PORT, () => {
 	console.log(`SerVer runnin on Port ${PORT}`);
