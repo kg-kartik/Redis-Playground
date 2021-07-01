@@ -1,6 +1,6 @@
 const express = require("express");
-const axios = require("axios");
 const bodyParser = require("body-parser");
+const redis = require("redis");
 
 //Definning routes
 const testRoute = require("./routes/test");
